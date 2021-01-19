@@ -13,28 +13,25 @@ import { FiBookmark } from 'react-icons/fi';
 
 const Sidebar = () => {
     return (
-        <>
-            <Logo/>
-            <SidebarNav>
-                <StyledLink to='/'>
-                    <AiOutlineHome />
-                    <p>Home Feed</p>
-                </StyledLink>
-                <StyledLink to='/:profile/abc'>
-                    <CgProfile />
-                    <p>Profile</p>
-                </StyledLink>
-                <StyledLink to='/notifications'>
-                    <MdNotificationsNone />
-                    <p>Notifications</p>
-                </StyledLink>
-                <StyledLink to='/bookmarks'>
-                    <FiBookmark />
-                    <p>Bookmarks</p>
-                </StyledLink>
-            </SidebarNav>
-        </>
-    
+        <SidebarNav>
+            <StyledLogo />
+            <StyledLink to='/'>
+                <AiOutlineHome className='logo'/>
+                <p>Home Feed</p>
+            </StyledLink>
+            <StyledLink to='/:profile/abc'>
+                <CgProfile className='logo'/>
+                <p>Profile</p>
+            </StyledLink>
+            <StyledLink to='/notifications'>
+                <MdNotificationsNone className='logo'/>
+                <p>Notifications</p>
+            </StyledLink>
+            <StyledLink to='/bookmarks'>
+                <FiBookmark className='logo'/>
+                <p>Bookmarks</p>
+            </StyledLink>
+        </SidebarNav>
     )
 };
 
@@ -42,24 +39,28 @@ const SidebarNav = styled.nav`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-
-    /* height: 10vh; */
-
 `
 const StyledLink = styled(Link)`//To change (Link) => (NavLink)
-    font-size: 1.5em;
     margin: 10px 0;
     text-decoration: none;
     display: flex;
     align-items: center;
+    font-weight: bold;
 
-    p{
-        margin-left: 10px;
+    .logo{
+        font-size: 1.6em;
     }
-
+    p{
+        margin-left: 15px;
+        font-size: 1.4em;
+    }
     /* &.active {
         color: ${COLORS.primary};
     } */
 `
+
+const StyledLogo = styled(Logo)`
+    height: 100px;
+`;
 
 export default Sidebar;
