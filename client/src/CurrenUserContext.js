@@ -10,13 +10,15 @@ export const CurrentUserProvider = ({ children }) => {
     // When the data is received, update currentUser.
     // Also, set `status` to `idle`
     React.useEffect(() => {
-        fetch('/api/me/profile')
+        if(status === "loading"){
+            fetch('/api/me/profile')
             .then((res) => res.json())
             .then((json) => {
                 setCurrentUser(json);
                 setStatus('idle');
                 console.log('fetched', json);
             })
+        }
     }, []);
 
     return (
