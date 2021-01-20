@@ -15,19 +15,19 @@ const Sidebar = () => {
     return (
         <SidebarNav>
             <StyledLogo />
-            <StyledLink to='/'>
+            <StyledLink exact to='/'>
                 <AiOutlineHome className='logo'/>
                 <p>Home Feed</p>
             </StyledLink>
-            <StyledLink to='/:profile/abc'>
+            <StyledLink exact to='/:profile/abc'>
                 <CgProfile className='logo'/>
                 <p>Profile</p>
             </StyledLink>
-            <StyledLink to='/notifications'>
+            <StyledLink exact to='/notifications'>
                 <MdNotificationsNone className='logo'/>
                 <p>Notifications</p>
             </StyledLink>
-            <StyledLink to='/bookmarks'>
+            <StyledLink exact to='/bookmarks'>
                 <FiBookmark className='logo'/>
                 <p>Bookmarks</p>
             </StyledLink>
@@ -39,13 +39,19 @@ const SidebarNav = styled.nav`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    width: 200px;
+    margin-left: 20px;
 `
-const StyledLink = styled(Link)`//To change (Link) => (NavLink)
-    margin: 10px 0;
+const StyledLink = styled(NavLink)`//To change (Link) => (NavLink)
+    margin: 5px 0;
     text-decoration: none;
     display: flex;
     align-items: center;
     font-weight: bold;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 10px 10px;
+    border-radius: 30px; 
 
     .logo{
         font-size: 1.6em;
@@ -54,9 +60,10 @@ const StyledLink = styled(Link)`//To change (Link) => (NavLink)
         margin-left: 15px;
         font-size: 1.4em;
     }
-    /* &.active {
+    &.active {
         color: ${COLORS.primary};
-    } */
+        background-color: ${COLORS.secondary};
+    }
 `
 
 const StyledLogo = styled(Logo)`

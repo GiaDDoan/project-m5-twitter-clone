@@ -19,7 +19,8 @@ function App() {
         <Notifications exact path="/notifications"/>
         <Bookmarks exact path="/bookmarks"/>
         <TweetDetails exact path="/tweet/:tweetId"/>
-        <Profile exact path="/:profileId"/>
+        {/* <Profile exact path="/:profileId"/> Uncomment and delete the line below when ID*/}
+        <Profile path="/:profileId"/>
       </Switch>
     </BrowserRouter>
   );
