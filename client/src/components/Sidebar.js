@@ -38,9 +38,12 @@ const Sidebar = () => {
 const SidebarNav = styled.nav`
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    width: 200px;
-    margin-left: 20px;
+    justify-content: flex-start;
+    /* align-items: center; */
+    padding-left: 4.5vw;
+    width: 18vw;
+    border: 2px red solid;
+    height: 100vh;
 `
 const StyledLink = styled(NavLink)`//To change (Link) => (NavLink)
     margin: 5px 0;
@@ -49,7 +52,7 @@ const StyledLink = styled(NavLink)`//To change (Link) => (NavLink)
     align-items: center;
     font-weight: bold;
     justify-content: flex-start;
-    width: 100%;
+    width: 200px;
     padding: 10px 10px;
     border-radius: 30px; 
 
