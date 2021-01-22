@@ -35,10 +35,12 @@ export default createGlobalStyle`
             width: 50px;
             padding: 15px;
         }
-        .inputField{
+        .textArea{
             width: 92%;
             height: 100%;
             margin-left: 20px;
+            font-size: 2em;
+            /* border: none; */
         }
     }
 `

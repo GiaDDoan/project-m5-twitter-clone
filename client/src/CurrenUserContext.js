@@ -12,12 +12,14 @@ export const CurrentUserProvider = ({ children }) => {
     React.useEffect(() => {
         if(status === "loading"){
             fetch('/api/me/profile')
-            .then((res) => res.json())
-            .then((json) => {
-                setCurrentUser(json);
-                setStatus('idle');
-                console.log('fetched', json);
+                .then((res) => res.json())
+                .then((json) => {
+                    setCurrentUser(json);
+                    setStatus('idle');
             })
+        }
+        return () => {
+            setStatus('loading');
         }
     }, []);
 
