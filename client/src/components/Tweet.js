@@ -1,32 +1,16 @@
 import React from 'react';
 import styled from "styled-components";
+import { ReactComponent as Logo } from "../assets/logo.svg"; //To remove
 
-const Tweet = ({ data, status }) => {
-    // console.log(data.tweetsById, 'Tweet.js')
-    let tweetArr = [];
-    if(status ==='idle'){
-        const TWEETS = data.tweetsById;
-        Object.values(TWEETS).map((tweetData) => {
-            // console.log(tweetData, 'tweetData');
-            tweetArr.push(tweetData);
-        })
-    }
-    console.log(tweetArr,'tweetA')
-
+const Tweet = ({ tweet, status }) => {
     return (
-        <>
-            {/* {tweet ? <Div>{tweet}</Div> : <Div>ERROR</Div>} */}
-            {tweetArr.map((tweet) => {
-                return(
-                    <Banner>{tweet.id}</Banner>
-                )
-            })}
-        </>
+        <Banner>TWEET{tweet.author.avatarSrc}</Banner>
     )
 }
 
 const Banner = styled.div`
-
+    border: green solid 2px;
+    height: 150px;
 `;
 
 export default Tweet;

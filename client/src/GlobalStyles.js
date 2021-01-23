@@ -28,7 +28,7 @@ export default createGlobalStyle`
             display: flex;
             height: 20vh;
         }
-        .currentUserImg{
+        .userImg{
             border: 2px green solid;
             border-radius: 40px;
             height: 50px;

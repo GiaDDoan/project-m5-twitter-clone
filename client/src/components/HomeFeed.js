@@ -6,16 +6,17 @@ import { ReactComponent as Logo } from "../assets/logo.svg"; //To remove
 import Tweet from './Tweet';
 
 const HomeFeed = () => {
-    const [data, setData] = React.useState(null)
     const [status, setStatus] = React.useState("loading");
+    const [tweets, setTweets] = React.useState([]);
 
     React.useEffect(() => {
         if(status === "loading"){
             fetch('/api/me/home-feed')
                 .then((res) => res.json())
                 .then((json) => {
-                    setData(json);
+                    // setData(json);
                     setStatus('idle');
+                    setTweets(Object.values(json.tweetsById))
                 })
         }
         return () => {
@@ -23,10 +24,9 @@ const HomeFeed = () => {
         }
     }, [])
 
-    if(status === 'idle'){
-        // console.log(data.tweetsById, 'HomeFeed');
-    }
-    
+    // if(status === 'idle'){
+    //     console.log(tweets, 'data')
+    // }
 
     return (
         <Div >
@@ -34,14 +34,20 @@ const HomeFeed = () => {
             <div className="container">
                 <h1 className="title">Home Feed</h1>
                 <div className="inputWithAvatar">
-                    <img className="currentUserImg" src={Logo}/>
+                    <img className="userImg" src={Logo}/>
                     <textarea className="textArea" type="text" placeholder="What's happening?"></textarea>
                 </div>
                 <div className="sendBtn">
                         <p>100</p>
                         <button>Meow</button>
                 </div>
-                <Tweet data={data} status={status}/>
+                {tweets.length > 0 ? (
+                    tweets.map((tweet) => {
+                        return (<Tweet 
+                        tweet={tweet}
+                        />)
+                    })
+                ):('')}
             </div>
         </Div>
     )
