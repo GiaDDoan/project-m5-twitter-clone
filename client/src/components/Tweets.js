@@ -1,17 +1,11 @@
 import React from 'react';
 import styled from "styled-components";
 
+import Moment from 'react-moment';
 import { AiOutlineRetweet } from 'react-icons/ai';
+import { GoPrimitiveDot } from 'react-icons/go';
 
 const Tweets = ({ tweet, status }) => {
-    // const [tweetFrom, setTweetFrom] = React.useState(null);
-
-    // if(tweet.retweetFrom){
-    //     setTweetFrom(tweet.retweetFrom);
-    // } else {
-    //     setTweetFrom(tweet.author);
-    // }
-
     return (
         // <>
         // {tweet.retweetFrom && tweet.author ? (
@@ -54,7 +48,7 @@ const Tweets = ({ tweet, status }) => {
                 <div className='tweetAndImg'>
                     <img className='userImg' src={tweet.author.avatarSrc}/>
                     <div className='tweetBody'>
-                        <Handle>{tweet.author.displayName}</Handle>
+                        <Handle>{tweet.author.displayName} <span>@{tweet.author.handle} - <Moment format="MMM Do YYYY">{tweet.timestamp}</Moment></span></Handle>
                         <p>{tweet.status}</p>
                         {tweet.media.length !== 0 ? (
                             <img className='media' src={tweet.media[0].url}/>
@@ -99,12 +93,18 @@ const TweetBanner = styled.div`
     .media{
         width: 500px;
         border-radius: 12%;
+        margin-bottom: 30px;
     }
     footer{
         border: black solid 2px;
     }
 `;
 const Handle = styled.h3`
+    span{
+        font-size: 0.85em;
+        font-weight: 400;
+        color: rgb(112,112,113);
+    }
 `;
 
 export default Tweets;

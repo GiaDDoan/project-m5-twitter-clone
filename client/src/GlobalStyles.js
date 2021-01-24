@@ -30,9 +30,9 @@ export default createGlobalStyle`
             height: 20vh;
         }
         .userImg{
-            border-radius: 40px;
-            height: 50px;
-            width: 50px;
+            border-radius: 50%;
+            height: 60px;
+            width: 60px;
             /* margin: 10px; */
         }
         .textArea{
