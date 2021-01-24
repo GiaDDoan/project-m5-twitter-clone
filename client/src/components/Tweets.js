@@ -4,53 +4,74 @@ import styled from "styled-components";
 import { AiOutlineRetweet } from 'react-icons/ai';
 
 const Tweets = ({ tweet, status }) => {
+    // const [tweetFrom, setTweetFrom] = React.useState(null);
+
+    // if(tweet.retweetFrom){
+    //     setTweetFrom(tweet.retweetFrom);
+    // } else {
+    //     setTweetFrom(tweet.author);
+    // }
+
     return (
-        <>
-        {tweet.retweetFrom && tweet.author ? (
-            <RetweetBanner>
-                <div class='retweetTextContainer'>
-                    <AiOutlineRetweet class='retweetIcon'/>
-                    <div class='retweetText'>{tweet.retweetFrom.displayName} Remeowed</div>
-                </div>
-                <div class='tweetContainer'>
-                    <img class='userImg' src={tweet.author.avatarSrc}/>
-                    <TweetBody>{tweet.author.displayName}</TweetBody>
-                </div>
-            </RetweetBanner>
-            ):(
-                <TweetBanner>
-                    <div class='tweetAndImg'>
-                        <img class='userImg' src={tweet.author.avatarSrc}/>
-                        <TweetBody>{tweet.author.displayName}</TweetBody>
-                    </div>
+        // <>
+        // {tweet.retweetFrom && tweet.author ? (
+        //     <RetweetBanner>
+        //         <div class='retweetTextContainer'>
+        //             <AiOutlineRetweet class='retweetIcon'/>
+        //             <div class='retweetText'>{tweet.retweetFrom.displayName} Remeowed</div>
+        //         </div>
+        //         <div class='tweetContainer'>
+        //             <img class='userImg' src={tweet.author.avatarSrc}/>
+        //             <div>
+        //                 <Handle>{tweet.author.displayName}</Handle>
+        //                 <div>{tweet.status}</div>
+        //             </div>
                     
-                </TweetBanner>
-            )}
+        //         </div>
+        //     </RetweetBanner>
+        //     ):(
+                // <TweetBanner>
+                //     <div class='tweetAndImg'>
+                //         <img class='userImg' src={tweet.author.avatarSrc}/>
+                //         <div>
+                //             <Handle>{tweet.author.displayName}</Handle>
+                //             <div>{tweet.status}</div>
+                //         </div>
+                        
+                //     </div>
+                    
+                // </TweetBanner>
+        //     )}
+        // </>
+        <>
+            {tweet.retweetFrom ? (
+                <RetweetBanner className='retweetTextContainer'>
+                    <AiOutlineRetweet className='retweetIcon'/>
+                    <div class='retweetText'>{tweet.retweetFrom.displayName} Remeowed</div>
+                </RetweetBanner>
+            ):('')}
+            <TweetBanner>
+                <div className='tweetAndImg'>
+                    <img className='userImg' src={tweet.author.avatarSrc}/>
+                    <div className='tweetBody'>
+                        <Handle>{tweet.author.displayName}</Handle>
+                        <p>{tweet.status}</p>
+                        {tweet.media.length !== 0 ? (
+                            <img className='media' src={tweet.media[0].url}/>
+                        ):('')}
+                        <footer>Comment, Retweet, Like, Save</footer>{/*//To replace with the ActionBar*/}
+                    </div>   
+                </div> 
+            </TweetBanner>        
         </>
-        // <Banner>
-        //     <img class='userImg' src={tweet.author.avatarSrc}/>
-        //     <TweetBody>
-        //         <h3>{tweet.author.displayName} <span class='handle'>@{tweet.author.handle}</span></h3>
-        //     </TweetBody>
-        // </Banner>
     )
 }
 
 const RetweetBanner = styled.div`
-    /* border: green solid 2px; */
-    border-bottom: 2px solid rgb(231,233,238);
-    /* height: {tweet.retweetFrom ? 200px : 150px}; */
-    height: 200px;
     display: flex;
-    flex-direction: column;
-
-    .retweetTextContainer{
-        display: flex;
-        margin: 7px 0 7px 38px;
-    }
+    margin: 5px 0 5px 38px;
     .retweetIcon{
         font-size: 1.2em;
-        /* margin-top: 10px; */
     }
     .retweetText{
         margin-left: 5px;
@@ -58,29 +79,32 @@ const RetweetBanner = styled.div`
         font-weight: 400;
         color: rgb(112,112,113);
     }
-
-    .tweetContainer{
-        display: flex;
-    }
-    img{
-        margin-left: 8px;
-        margin-right: 10px;
-    }
 `;
 const TweetBanner = styled.div`
-    height: 180px;
     border-bottom: 2px solid rgb(231,233,238);
 
-    img{
+    .userImg{
         margin-right: 10px;
     }
     .tweetAndImg{
         display: flex;
         margin-left: 8px;
-        margin-top: 10px;
+    }
+    .tweetBody{
+        width: 100%;
+    }
+    p{
+        margin-bottom: 30px;
+    }
+    .media{
+        width: 500px;
+        border-radius: 12%;
+    }
+    footer{
+        border: black solid 2px;
     }
 `;
-const TweetBody = styled.h3`
+const Handle = styled.h3`
 `;
 
 export default Tweets;
