@@ -42,8 +42,8 @@ const SidebarNav = styled.nav`
     /* align-items: center; */
     padding-left: 4.5vw;
     width: 400px;
-    border: 2px red solid;
     height: 100vh;
+    border-top: 2px solid rgb(231,233,238);
 `
 const StyledLink = styled(NavLink)`//To change (Link) => (NavLink)
     margin: 5px 0;

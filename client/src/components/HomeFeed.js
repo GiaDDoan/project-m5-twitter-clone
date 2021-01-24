@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import Sidebar from "./Sidebar";
 import { ReactComponent as Logo } from "../assets/logo.svg"; //To remove
-import Tweet from './Tweet';
+import Tweets from './Tweets';
 
 const HomeFeed = () => {
     const [status, setStatus] = React.useState("loading");
@@ -43,7 +43,7 @@ const HomeFeed = () => {
                 </div>
                 {tweets.length > 0 ? (
                     tweets.map((tweet) => {
-                        return (<Tweet 
+                        return (<Tweets 
                         tweet={tweet}
                         />)
                     })

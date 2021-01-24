@@ -6,18 +6,19 @@ export default createGlobalStyle`
         margin: 0;
         padding: 0;
         font-style: sans-serif;
+        margin-top: 3px;
 
         .container{
                     display: flex;
                     flex-direction: column;
-                    border: 2px solid black;
+                    border: 2px solid rgb(231,233,238);
                     width: 77vw;
                 }
 
         .title {
             height: 7vh;
             color: blue;
-            border-bottom: 2px solid black;
+            border-bottom: 2px solid rgb(231,233,238);
             padding-left: 1vw;
         }
 
@@ -29,11 +30,10 @@ export default createGlobalStyle`
             height: 20vh;
         }
         .userImg{
-            border: 2px green solid;
             border-radius: 40px;
             height: 50px;
             width: 50px;
-            padding: 15px;
+            /* margin: 10px; */
         }
         .textArea{
             width: 92%;
