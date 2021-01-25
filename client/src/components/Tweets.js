@@ -1,42 +1,19 @@
 import React from 'react';
 import styled from "styled-components";
+import { useHistory } from 'react-router-dom';
 
 import Moment from 'react-moment';
 import { AiOutlineRetweet } from 'react-icons/ai';
 import { GoPrimitiveDot } from 'react-icons/go';
 
 const Tweets = ({ tweet, status }) => {
+    let history = useHistory();
+
+    function handleClick() {
+        history.push('/:profileId');
+    }
+    
     return (
-        // <>
-        // {tweet.retweetFrom && tweet.author ? (
-        //     <RetweetBanner>
-        //         <div class='retweetTextContainer'>
-        //             <AiOutlineRetweet class='retweetIcon'/>
-        //             <div class='retweetText'>{tweet.retweetFrom.displayName} Remeowed</div>
-        //         </div>
-        //         <div class='tweetContainer'>
-        //             <img class='userImg' src={tweet.author.avatarSrc}/>
-        //             <div>
-        //                 <Handle>{tweet.author.displayName}</Handle>
-        //                 <div>{tweet.status}</div>
-        //             </div>
-                    
-        //         </div>
-        //     </RetweetBanner>
-        //     ):(
-                // <TweetBanner>
-                //     <div class='tweetAndImg'>
-                //         <img class='userImg' src={tweet.author.avatarSrc}/>
-                //         <div>
-                //             <Handle>{tweet.author.displayName}</Handle>
-                //             <div>{tweet.status}</div>
-                //         </div>
-                        
-                //     </div>
-                    
-                // </TweetBanner>
-        //     )}
-        // </>
         <>
             {tweet.retweetFrom ? (
                 <RetweetBanner className='retweetTextContainer'>
@@ -48,7 +25,10 @@ const Tweets = ({ tweet, status }) => {
                 <div className='tweetAndImg'>
                     <img className='userImg' src={tweet.author.avatarSrc}/>
                     <div className='tweetBody'>
-                        <Handle>{tweet.author.displayName} <span>@{tweet.author.handle} - <Moment format="MMM Do YYYY">{tweet.timestamp}</Moment></span></Handle>
+                        <Handle>
+                            <span className='displayName' onClick={handleClick}>{tweet.author.displayName}</span> &nbsp;
+                            <span>@{tweet.author.handle} - <Moment format="MMM Do YYYY">{tweet.timestamp}</Moment></span>
+                        </Handle>
                         <p>{tweet.status}</p>
                         {tweet.media.length !== 0 ? (
                             <img className='media' src={tweet.media[0].url}/>
@@ -100,6 +80,15 @@ const TweetBanner = styled.div`
     }
 `;
 const Handle = styled.h3`
+    .displayName{
+        font-weight: bold;
+        font-size: 1.05em;
+        color: black;
+
+        :hover{
+            border-bottom: 1px solid black;
+        }
+    };
     span{
         font-size: 0.85em;
         font-weight: 400;

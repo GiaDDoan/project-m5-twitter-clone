@@ -40,7 +40,9 @@ export default createGlobalStyle`
             height: 100%;
             margin-left: 20px;
             font-size: 2em;
-            /* border: none; */
+            border: none;
+            outline: none;
+            resize: none;
         }
     }
 `

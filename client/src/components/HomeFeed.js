@@ -38,7 +38,7 @@ const HomeFeed = () => {
                     <textarea className="textArea" type="text" placeholder="What's happening?"></textarea>
                 </div>
                 <div className="sendBtn">
-                        <p>100</p>
+                        <p>Number of letters left</p>
                         <button>Meow</button>
                 </div>
                 {tweets.length > 0 ? (
