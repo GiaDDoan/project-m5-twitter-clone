@@ -6,6 +6,8 @@ import Moment from 'react-moment';
 import { AiOutlineRetweet } from 'react-icons/ai';
 import { GoPrimitiveDot } from 'react-icons/go';
 
+import { ActionBar } from './ActionBar/ActionBar';
+
 const Tweets = ({ tweet, status }) => {
     let history = useHistory();
 
@@ -33,7 +35,7 @@ const Tweets = ({ tweet, status }) => {
                         {tweet.media.length !== 0 ? (
                             <img className='media' src={tweet.media[0].url}/>
                         ):('')}
-                        <footer>Comment, Retweet, Like, Save</footer>{/*//To replace with the ActionBar*/}
+                        <ActionBar />{/*//To replace with the ActionBar*/}
                     </div>   
                 </div> 
             </TweetBanner>        

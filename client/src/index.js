@@ -4,11 +4,14 @@ import './index.css';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
 import { CurrentUserProvider } from './CurrenUserContext';
+import { ActionBarProvider } from './components/ActionBar/ActionBarContext';
 
 ReactDOM.render(
   <React.StrictMode>
     <CurrentUserProvider>
-      <App />
+      <ActionBarProvider>
+        <App />
+      </ActionBarProvider>
     </CurrentUserProvider>
   </React.StrictMode>,
   document.getElementById('root')
