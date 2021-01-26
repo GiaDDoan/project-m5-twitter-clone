@@ -35,7 +35,12 @@ const Tweets = ({ tweet, status }) => {
                         {tweet.media.length !== 0 ? (
                             <img className='media' src={tweet.media[0].url}/>
                         ):('')}
-                        <ActionBar />{/*//To replace with the ActionBar*/}
+                        <ActionBar
+                            isRetweetedByUser={tweet.isRetweeted}
+                            numRetweets={tweet.numRetweets}
+                            isLikedByUser={tweet.isLiked}
+                            numLikes={tweet.numLikes}
+                        />
                     </div>   
                 </div> 
             </TweetBanner>        
@@ -76,9 +81,6 @@ const TweetBanner = styled.div`
         width: 500px;
         border-radius: 12%;
         margin-bottom: 30px;
-    }
-    footer{
-        border: black solid 2px;
     }
 `;
 const Handle = styled.h3`

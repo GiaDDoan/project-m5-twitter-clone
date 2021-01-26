@@ -19,6 +19,14 @@ export const ActionBarProvider = ({ children }) => {
         }
     };
 
+    const handleToggleRetweet = ({ numLikes }) => {
+        if(!isRetweetedByCurrentUser){
+            setIsRetweetedByCurrentUser(true);
+        } else {
+            setIsRetweetedByCurrentUser(false);
+        }
+    };
+
     return (
         <ActionBarContext.Provider
             value={{
@@ -27,6 +35,7 @@ export const ActionBarProvider = ({ children }) => {
                 isRetweetedByCurrentUser,
                 setIsRetweetedByCurrentUser,
                 handleToggleLike,
+                handleToggleRetweet,
             }}
         >
             {children}
