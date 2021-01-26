@@ -35,14 +35,5 @@ export default createGlobalStyle`
             width: 60px;
             /* margin: 10px; */
         }
-        .textArea{
-            width: 92%;
-            height: 100%;
-            margin-left: 20px;
-            font-size: 2em;
-            border: none;
-            outline: none;
-            resize: none;
-        }
     }
 `

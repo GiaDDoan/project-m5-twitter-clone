@@ -4,10 +4,18 @@ import styled from "styled-components";
 import Sidebar from "./Sidebar";
 import { ReactComponent as Logo } from "../assets/logo.svg"; //To remove
 import Tweets from './Tweets';
+import Input from './Input';
 
 const HomeFeed = () => {
     const [status, setStatus] = React.useState("loading");
     const [tweets, setTweets] = React.useState([]);
+    const [inputValues, setInputValues] = React.useState({ textInput:""});
+    const [inputLength, setInputLength] = React.useState(0);
+    const [numOfLettersLeft, setNumOfLettersLeft] = React.useState(300);
+
+    const handleChange = (val, item) => {
+        setInputValues({ ...inputValues, [item]: val })
+    }
 
     React.useEffect(() => {
         if(status === "loading"){
@@ -23,9 +31,19 @@ const HomeFeed = () => {
             setStatus('loading');
         }
     }, [])
+    React.useEffect(() => {
+        if(inputValues.textInput !== ""){
+            // console.log(inputValues, inputValues.textInput.split(), 'Values');
+            let inputArray = [inputValues.textInput];
+            let arrLength = inputArray[0].split('').length;
+            setInputLength(arrLength);
+        };
+        
+    }, [inputValues]);
+    console.log(inputLength, 'LENGTH');
 
-    // if(status === 'idle'){
-    //     console.log(tweets, 'data')
+    // if(inputLength > 0){
+    //     setNumOfLettersLeft(numOfLettersLeft - inputLength);
     // }
 
     return (
@@ -35,10 +53,16 @@ const HomeFeed = () => {
                 <h1 className="title">Home Feed</h1>
                 <div className="inputWithAvatar">
                     <img className="userImg" src={Logo}/>
-                    <textarea className="textArea" type="text" placeholder="What's happening?"></textarea>
+                    <Input 
+                        name="textInput"
+                        type="text"
+                        placeholder="What's happening?"
+                        handleChange={handleChange}
+                        value={inputValues.textInput}
+                    />
                 </div>
                 <div className="sendBtn">
-                        <p>Number of letters left</p>
+                        <p>{numOfLettersLeft}</p>
                         <button>Meow</button>
                 </div>
                 {tweets.length > 0 ? (
