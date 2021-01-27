@@ -7,14 +7,23 @@ import { AiOutlineRetweet } from 'react-icons/ai';
 import { GoPrimitiveDot } from 'react-icons/go';
 
 import { ActionBar } from './ActionBar/ActionBar';
+import { CurrentUserContext } from '../CurrenUserContext';
 
 const Tweets = ({ tweet, status }) => {
     let history = useHistory();
+    const { currentUser } = React.useContext(CurrentUserContext);
 
     function handleClick() {
-        history.push('/:profileId');
+        //if(currentUser.profile.handle === tweet.author.handle){
+            history.push(`/api/${tweet.author.handle}/profile`);
+            console.log('handleClicked');
+        //}
+        // history.push('/:profileId');
     }
     
+    if(status === "loading"){
+        <div>LOADING WHEEL</div>
+    }
     return (
         <>
             {tweet.retweetFrom ? (
@@ -28,7 +37,12 @@ const Tweets = ({ tweet, status }) => {
                     <img className='userImg' src={tweet.author.avatarSrc}/>
                     <div className='tweetBody'>
                         <Handle>
-                            <span className='displayName' onClick={handleClick}>{tweet.author.displayName}</span> &nbsp;
+                            <span 
+                                className='displayName'
+                                onClick={handleClick}
+                            >
+                                {tweet.author.displayName}
+                            </span> &nbsp;
                             <span>@{tweet.author.handle} - <Moment format="MMM Do YYYY">{tweet.timestamp}</Moment></span>
                         </Handle>
                         <p>{tweet.status}</p>

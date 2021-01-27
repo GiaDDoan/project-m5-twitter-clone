@@ -10,11 +10,11 @@ const Profile = () => {
 
     if(status ==="loading"){
         return( 
-            <div>loading</div>
+            <div>loading wheel</div>
         )
     } else if(status === "error"){
         return(
-            <div>ERROR</div>
+            <div>ERROR bomb</div>
         )
     } else {
         return (

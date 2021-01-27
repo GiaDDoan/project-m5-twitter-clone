@@ -81,7 +81,11 @@ const HomeFeed = () => {
     //Page return
     if(status === "loading"){
         return(
-            <div>Loading</div>
+            <Div>
+                <Sidebar></Sidebar>
+                <div className="container">LOADING WHEEL</div>
+            </Div>
+            
         )
     } else {
         return (
