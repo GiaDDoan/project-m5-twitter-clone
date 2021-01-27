@@ -21,13 +21,27 @@ const HomeFeed = () => {
         setInputValues({ ...inputValues, [item]: val })
     }
 
+     // function compare(a, b) {
+    //     const A = a.timestamp
+    // }
+    // console.log(tweets, 'tweets');
+    // let sortedArr = tweets.sort(function(x, y){
+    //     return x.timestamp - y.timestamp;
+    // })
+    // console.log(sortedArr, 'sortedArr');
+    // setTweets(sortedArr);
+
     const fetchHomeFeed = () => {
         fetch('/api/me/home-feed')
                 .then((res) => res.json())
                 .then((json) => {
                     // setData(json);
                     setStatus('idle');
-                    setTweets(Object.values(json.tweetsById))
+                    let tweetsArr = Object.values(json.tweetsById)
+                    let newArr = tweetsArr.sort(function(a,b){
+                        return new Date(b.timestamp) - new Date(a.timestamp)
+                    })
+                    setTweets(newArr);
                 })
     }
     React.useEffect(() => {
@@ -44,8 +58,8 @@ const HomeFeed = () => {
         };
         
     }, [inputValues]);
-    console.log(inputLength, 'LENGTH');
-    console.log(inputValues, 'value');
+    // console.log(inputLength, 'LENGTH');
+    // console.log(inputValues, 'value');
 
     const handleSubmit = (ev) => {
         ev.preventDefault();
@@ -63,8 +77,8 @@ const HomeFeed = () => {
             setStatus("loading");
             fetchHomeFeed();
         })
-
     }
+    //Page return
     if(status === "loading"){
         return(
             <div>Loading</div>
