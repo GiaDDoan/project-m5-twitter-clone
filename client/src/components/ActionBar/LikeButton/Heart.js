@@ -25,10 +25,13 @@ const Heart = ({ width, isToggled }) => {
 }
 
 const Svg = styled.svg`
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     backface-visibility: hidden;
     fill: none;
     z-index: 100;
+    margin: 0; 
 `;
 
 export default Heart;

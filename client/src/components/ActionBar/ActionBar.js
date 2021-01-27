@@ -70,6 +70,6 @@ const ActionWithNumber = styled.div`
     align-items: center;
 
     div{
-        margin-left: 4px;
+        margin: 0;
     }
 `;

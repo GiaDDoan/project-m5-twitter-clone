@@ -15,16 +15,16 @@ const FAILURE_ODDS = 0.05;
 const simulateProblems = (res, data) => {
   const delay = Math.random() * MAX_DELAY;
 
-  setTimeout(() => {
-    const shouldError = Math.random() <= FAILURE_ODDS;
+  // setTimeout(() => {
+  //   const shouldError = Math.random() <= FAILURE_ODDS;
 
-    if (shouldError) {
-      res.sendStatus(500);
-      return;
-    }
+  //   if (shouldError) {
+  //     res.sendStatus(500);
+  //     return;
+  //   }
 
     res.json(data);
-  }, delay);
+  // }, delay);
 };
 
 const getUser = handle => {

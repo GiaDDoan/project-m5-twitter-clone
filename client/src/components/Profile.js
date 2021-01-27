@@ -6,14 +6,24 @@ import { CurrentUserContext } from '../CurrenUserContext';
 
 const Profile = () => {
     const { currentUser, status } = React.useContext(CurrentUserContext);
-    console.log(currentUser, status,'CURRENT USER');
+    // console.log(currentUser.profile, status,'CURRENT USER');
 
-    return (
-        <Div>
-            <Sidebar></Sidebar>
-            <Div>Profile</Div>
-        </Div>
-    )
+    if(status ==="loading"){
+        return( 
+            <div>loading</div>
+        )
+    } else if(status === "error"){
+        return(
+            <div>ERROR</div>
+        )
+    } else {
+        return (
+            <Div>
+                <Sidebar></Sidebar>
+                <Div>{currentUser.profile.displayName}</Div>
+            </Div>
+        )
+    }
 };
 
 const Div = styled.div`

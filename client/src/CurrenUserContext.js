@@ -9,14 +9,30 @@ export const CurrentUserProvider = ({ children }) => {
     // Fetch the user data from the API (/me/profile)
     // When the data is received, update currentUser.
     // Also, set `status` to `idle`
-    React.useEffect(() => {
+    // React.useEffect(() => {
+    //     if(status === "loading"){
+    //         fetch('/api/me/profile')
+    //             .then((res) => res.json())
+    //             .then((json) => {
+    //                 setCurrentUser(json);
+    //                 setStatus('idle');
+    //         })
+    //     }
+    //     return () => {
+    //         setStatus('loading');
+    //     }
+    // }, []);
+    React.useEffect(async () => {
         if(status === "loading"){
-            fetch('/api/me/profile')
-                .then((res) => res.json())
-                .then((json) => {
-                    setCurrentUser(json);
-                    setStatus('idle');
-            })
+            try{
+                const fetchResponse = await fetch('api/me/profile');
+                const fetchBody = await fetchResponse.json();
+                setStatus('idle');
+                setCurrentUser(fetchBody);
+            } catch(error){
+                console.log('ERROR')
+                setStatus('error');
+            }
         }
         return () => {
             setStatus('loading');
