@@ -1,5 +1,5 @@
 import React from 'react';
-import {  BrowserRouter, Switch } from 'react-router-dom';
+import {  BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import logo from './logo.svg';
 import GlobalStyles from './GlobalStyles';
@@ -20,7 +20,10 @@ function App() {
         <Bookmarks exact path="/bookmarks"/>
         <TweetDetails exact path="/tweet/:tweetId"/>
         {/* <Profile exact path="/:profileId"/> Uncomment and delete the line below when ID */}
-        <Profile path="/:profileId"/>
+        <Route path="/:profileId">
+            <Profile />
+        </Route>
+        {/* <Profile path="/:profileId"/> */}
       </Switch>
     </BrowserRouter>
   );

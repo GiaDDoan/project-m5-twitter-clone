@@ -25,7 +25,7 @@ export const CurrentUserProvider = ({ children }) => {
     React.useEffect(async () => {
         if(status === "loading"){
             try{
-                const fetchResponse = await fetch('api/me/profile');
+                const fetchResponse = await fetch('/api/me/profile');
                 const fetchBody = await fetchResponse.json();
                 setStatus('idle');
                 setCurrentUser(fetchBody);

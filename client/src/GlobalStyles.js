@@ -12,7 +12,7 @@ export default createGlobalStyle`
                     display: flex;
                     flex-direction: column;
                     border: 2px solid rgb(231,233,238);
-                    width: 77vw;
+                    width: 950px;
                 }
 
         .title {

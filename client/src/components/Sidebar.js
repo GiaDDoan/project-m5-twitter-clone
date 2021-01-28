@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useHistory } from "react-router-dom";
 
 import { ReactComponent as Logo } from "../assets/logo.svg";
 import { COLORS } from "../constants/colors"
@@ -10,8 +10,22 @@ import { AiOutlineHome } from "react-icons/ai";
 import { CgProfile } from 'react-icons/cg';
 import { MdNotificationsNone } from 'react-icons/md';
 import { FiBookmark } from 'react-icons/fi';
+import { CurrentUserContext } from '../CurrenUserContext';
 
 const Sidebar = () => {
+    const [sidebarStatus, setSidebarStatus] = React.useState("loading")
+    const { currentUser, status } = React.useContext(CurrentUserContext);
+
+    // React.useEffect(() => {
+    //     if(sidebarStatus==="loading"){
+    //         setSidebarStatus("idle")
+    //     }
+    // },[])
+    // console.log(sidebarStatus, 'status');
+
+    // if(sidebarStatus==="loading"){
+    //     <div>LOADING</div>
+    // }
     return (
         <SidebarNav>
             <StyledLogo />
@@ -19,7 +33,8 @@ const Sidebar = () => {
                 <AiOutlineHome className='logo'/>
                 <p>Home Feed</p>
             </StyledLink>
-            <StyledLink exact to='/:profile/abc'>
+            {/* <StyledLink exact to={`/${currentUser.profile.handle}`}> */}
+            <StyledLink  exact to='/treasurymog'>
                 <CgProfile className='logo'/>
                 <p>Profile</p>
             </StyledLink>

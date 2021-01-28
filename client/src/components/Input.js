@@ -22,7 +22,7 @@ const Wrapper = styled.div`
     .textArea{
             text-indent: 10px;
             padding-bottom: 130px;
-            width: 100%;
+            width: 98%;
             height: 100%;
             margin-left: 20px;
             font-size: 2em;

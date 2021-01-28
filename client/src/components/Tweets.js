@@ -14,11 +14,11 @@ const Tweets = ({ tweet, status }) => {
     const { currentUser } = React.useContext(CurrentUserContext);
 
     function handleClick() {
-        //if(currentUser.profile.handle === tweet.author.handle){
-            history.push(`/api/${tweet.author.handle}/profile`);
-            console.log('handleClicked');
-        //}
-        // history.push('/:profileId');
+        // if(currentUser.profile.handle === tweet.author.handle){
+        //     history.push(`/api/me/profile`);
+        //     console.log('handleClicked');
+        // }
+        history.push(`/${tweet.author.handle}`);
     }
     
     if(status === "loading"){
