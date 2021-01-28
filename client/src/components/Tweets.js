@@ -92,8 +92,9 @@ const TweetBanner = styled.div`
         margin-bottom: 30px;
     }
     .media{
-        width: 500px;
-        border-radius: 12%;
+        width: 95%;
+        height: 400px;
+        border-radius: 10px;
         margin-bottom: 30px;
     }
 `;

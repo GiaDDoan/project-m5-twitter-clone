@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { NavLink, Link, useHistory } from "react-router-dom";
 
 import { ReactComponent as Logo } from "../assets/logo.svg";
-import { COLORS } from "../constants/colors"
+import { COLORS } from "../constants/colors";
 
 //ICONS
 import { AiOutlineHome } from "react-icons/ai";
@@ -81,6 +81,9 @@ const StyledLink = styled(NavLink)`//To change (Link) => (NavLink)
     &.active {
         color: ${COLORS.primary};
         background-color: ${COLORS.secondary};
+    }
+    :hover{
+        background-color: rgb(238,232,254);
     }
 `
 

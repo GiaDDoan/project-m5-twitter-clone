@@ -78,6 +78,7 @@ const HomeFeed = () => {
             fetchHomeFeed();
         })
     }
+    console.log(tweets, 'HomeFeed')
     //Page return
     if(status === "loading"){
         return(
